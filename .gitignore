@@ -1,0 +1,10 @@
+__pycache__/
+.venv
+venv/
+.Python
+
+runs/
+datasets/
+
+*.mp4
+*.pt
