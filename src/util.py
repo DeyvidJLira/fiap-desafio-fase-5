@@ -46,7 +46,7 @@ def split_img_label(images_path, labels_path, train_ratio=0.7, val_ratio=0.2, te
                 shutil.move(img_path, os.path.join(DATASETS, IMAGES, split, os.path.basename(img_path)))
                 shutil.move(label_path, os.path.join(DATASETS, LABELS, split, os.path.basename(label_path)))
             else:
-                print(f"No label found for {img_path}")
+                print(f"Nenhum rótulo encontrado {img_path}")
 
     move_files(train_files, TRAIN)
     move_files(val_files, VAL)

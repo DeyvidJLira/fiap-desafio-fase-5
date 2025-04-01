@@ -1,4 +1,6 @@
 ffmpeg==4.2.2
 opencv==4.6.0
+python-dotenv==0.21.0
+sendgrid==6.7.1
 tqdm==4.65.0
 ultralytics==8.3.87
