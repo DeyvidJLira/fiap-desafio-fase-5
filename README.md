@@ -53,3 +53,5 @@ Caso queira treinar um novo modelo, deverá seguir os passos:
 - crie a pasta `dataset_to_split` na raiz do projeto e adicione as pastas images e labels com seus respectivos arquivos. Para facilitar utilize [Label Studio](https://labelstud.io/);
 - execute main.py;
 - pronto agora você verá um novo best.pt disponível na raiz do projeto.
+
+Saiba mais em: [Documentação](https://github.com/DeyvidJLira/fiap-desafio-fase-5/wiki/Documenta%C3%A7%C3%A3o)
