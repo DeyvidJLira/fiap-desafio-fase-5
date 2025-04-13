@@ -3,8 +3,10 @@ from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail, Attachment, FileContent, FileName, FileType, Disposition
 import base64
 
+from constants import DISABLE_EMAIL_SERVICE
+
 def send_email(subject, body, attachment_content=None, attachment_name=None, attachment_type='image/jpg'):
-    if os.getenv("DISABLE_EMAIL_SERVICE") == "true":
+    if DISABLE_EMAIL_SERVICE:
         print("Serviço de e-mail desativado.")
         return
 

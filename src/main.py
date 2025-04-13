@@ -20,5 +20,5 @@ if __name__ == "__main__":
         model = YOLO(FINE_TUNED_MODEL)
         
         #execute_video(model)
-        process_video("videos/video_1.mp4", model, True)
-        #process_video("videos/video_2.mp4", model, True, "processado2.mp4")
+        #process_video("videos/video_1.mp4", model, True)
+        process_video("videos/video_2.mp4", model, True, "processado2.mp4")

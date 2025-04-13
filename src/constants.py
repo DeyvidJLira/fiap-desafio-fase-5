@@ -1,8 +1,9 @@
-BASE_MODEL = "yolo11n.pt"
-FINE_TUNED_MODEL = "best.pt"
-DATASET_CONFIG_FILE = "dataset.yaml"
+BASE_MODEL = "yolo11n.pt" # Modelo base
+FINE_TUNED_MODEL = "best.pt" # Modelo treinado
+DATASET_CONFIG_FILE = "dataset.yaml" # Arquivo de configuração do dataset
+DISABLE_EMAIL_SERVICE = False    # Para desativar o serviço de e-mail, defina como True
 
-CONFIDENCE = 0.35
+CONFIDENCE = 0.35 # Limite de confiança para detecção de objetos
 
 ERROR_AT_OPEN_VIDEO = "Falhou em abrir o arquivo de vídeo."
 
