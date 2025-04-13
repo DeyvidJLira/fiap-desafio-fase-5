@@ -3,4 +3,5 @@ val: images/val
 test: images/test
 
 names:
-  0: knife
+  0: Hand
+  1: Knife

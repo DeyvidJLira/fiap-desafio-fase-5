@@ -3,7 +3,7 @@ import os
 import time
 import io
 from email_service import send_email
-from constants import CONFIDENCE, ERROR_AT_OPEN_VIDEO, MINIMUM_INTERVAL_EMAIL_IN_SECONDS, PROCESSING_VIDEO_LABEL, WARNING_LIST
+from constants import CONFIDENCE, ERROR_AT_OPEN_VIDEO, MINIMUM_INTERVAL_EMAIL_IN_SECONDS, PROCESSING_VIDEO_LABEL, SECURE_LIST, WARNING_LIST
 from ultralytics import YOLO
 from tqdm import tqdm
 from PIL import Image
@@ -21,14 +21,18 @@ def detect_in_frame(model: YOLO, frame):
             label = result.names[int(box.cls[0])]
         
             if confidence >= CONFIDENCE:
-                print(f"Detectado: {label} com confiança de {confidence:.2f}")  # Log para depuração
-                handle_warning(label, confidence, frame)
-                draw_rectangle(frame, x1, y1, x2, y2, label, confidence)
+                print(f"Detectado: {label} com confiança de {confidence:.2f}")  
+                if label in WARNING_LIST:
+                    handle_warning(label, confidence, frame)
+                    draw_rectangle(frame, x1, y1, x2, y2, label, confidence)
+                else:
+                    print(f"{label} não está na lista de alerta.")
 
 
 # Função para lidar com alertas
 def handle_warning(label, confidence, frame):
     current_time = time.time()
+        
     if label in WARNING_LIST:
         if label not in last_email_sent or (current_time - last_email_sent[label]) > MINIMUM_INTERVAL_EMAIL_IN_SECONDS:
             # Converte o frame para JPEG e salva em memória
@@ -45,7 +49,7 @@ def handle_warning(label, confidence, frame):
             )
             last_email_sent[label] = current_time
     else:
-        print(f"{label} não está na lista de avisos.")  # Log para depuração
+        print(f"{label} não está na lista de avisos.") 
 
 
 # Função para desenhar um retângulo indicando o objeto detectado em um frame

@@ -2,7 +2,7 @@ BASE_MODEL = "yolo11n.pt"
 FINE_TUNED_MODEL = "best.pt"
 DATASET_CONFIG_FILE = "dataset.yaml"
 
-CONFIDENCE = 0.5
+CONFIDENCE = 0.35
 
 ERROR_AT_OPEN_VIDEO = "Falhou em abrir o arquivo de vídeo."
 
@@ -15,6 +15,7 @@ LABEL_FINE_TUNED_MODEL_SAVED = f"Modelo fine tuned salvo como {FINE_TUNED_MODEL}
 
 MINIMUM_INTERVAL_EMAIL_IN_SECONDS = 300  # 5 minutos
 
-PROCESSING_VIDEO_LABEL = "Processing video..."
+PROCESSING_VIDEO_LABEL = "Processando video..."
 
-WARNING_LIST = ["knife", "scissor", "serra", "canivete", "estilete", "navalha", "alicate", "axe", "foice"]
+WARNING_LIST = ["Knife"]
+SECURE_LIST = ["Hand"]

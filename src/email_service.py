@@ -4,6 +4,10 @@ from sendgrid.helpers.mail import Mail, Attachment, FileContent, FileName, FileT
 import base64
 
 def send_email(subject, body, attachment_content=None, attachment_name=None, attachment_type='image/jpg'):
+    if os.getenv("DISABLE_EMAIL_SERVICE") == "true":
+        print("Serviço de e-mail desativado.")
+        return
+
     sendgrid_api_key = os.getenv("SENDGRID_API_KEY")
     
     message = Mail(
