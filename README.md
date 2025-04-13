@@ -5,7 +5,7 @@
 Antes de começar, verifique se você atendeu ao seguintes requisitos:
 
 - Python na versão 3.11.
-- Colocou os 2 arquivos de vídeos na pasta de vídeo, o nome deles devem ser respectivamente video_1.mp4 e video_2.mp4.
+- Colocou os 2 arquivos de vídeos na pasta de vídeo, o nome deles devem ser respectivamente video_1.mp4 e video_2.mp4, mas você pode alterar no arquivo `main.py`.
 
 ## 🚀 Configurando
 
@@ -27,6 +27,7 @@ pip install -r requirements.txt
 O código fonte do projeto, na pasta src, é composto por 5 arquivos, sendo eles:
 
 - constants.py -> Como o próprio nome diz, é onde estar todas as constantes do projeto;
+- email_service.py -> Contém a função de enviar email com texto e anexo, no projeto é utilizado para enviar alerta de que detectou um objeto cortante e o print do frame é enviado;
 - main.py -> Arquivo principal para execução do projeto;
 - train_model.py -> Contém a função de treinamento;
 - util.py -> Destinado a funções utilitárias, nesse projeto contém a função de distribuir as imagens e labels em train, test e val;
@@ -52,3 +53,5 @@ Caso queira treinar um novo modelo, deverá seguir os passos:
 - crie a pasta `dataset_to_split` na raiz do projeto e adicione as pastas images e labels com seus respectivos arquivos. Para facilitar utilize [Label Studio](https://labelstud.io/);
 - execute main.py;
 - pronto agora você verá um novo best.pt disponível na raiz do projeto.
+
+Saiba mais em: [Documentação](https://github.com/DeyvidJLira/fiap-desafio-fase-5/wiki/Documenta%C3%A7%C3%A3o)
