@@ -4,7 +4,7 @@ Projeto destinado ao desafio da fase 5 do curso de pós graduação "AI para dev
 
 ## Quer ver no Google Colab? (Uso mais fácil)
 
-[![Ver no Colab](https://colab.research.google.com/drive/153mcmwWoSCypodpIetesmG2X0Iyg0Qv0?usp=sharing)
+[![Ver no Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/153mcmwWoSCypodpIetesmG2X0Iyg0Qv0?usp=sharing)
 
 ## 💻 Pré-requisitos
 
