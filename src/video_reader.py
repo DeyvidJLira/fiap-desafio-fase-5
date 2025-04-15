@@ -1,12 +1,10 @@
 import cv2
 import os
 import time
-import io
 from email_service import send_email
 from constants import CONFIDENCE, ERROR_AT_OPEN_VIDEO, MINIMUM_INTERVAL_EMAIL_IN_SECONDS, PROCESSING_VIDEO_LABEL, SECURE_LIST, WARNING_LIST
 from ultralytics import YOLO
 from tqdm import tqdm
-from PIL import Image
 
 last_email_sent = {}
 
@@ -19,7 +17,6 @@ def detect_in_frame(model: YOLO, frame):
             x1, y1, x2, y2 = map(int, box.xyxy[0])
             confidence = box.conf[0]
             label = result.names[int(box.cls[0])]
-        
             if confidence >= CONFIDENCE:
                 print(f"Detectado: {label} com confiança de {confidence:.2f}")  
                 if label in WARNING_LIST:
@@ -42,7 +39,7 @@ def handle_warning(label, confidence, frame):
             # Envia o e-mail com o frame como anexo
             send_email(
                 "Alerta de Segurança",
-                f"Detectado {label} com confiança de {confidence:.2f}",
+                f"Detectado cortante com confiança de {confidence:.2f}",
                 attachment_content=image_bytes,
                 attachment_name="detected_frame.jpg",
                 attachment_type="image/jpeg"

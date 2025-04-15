@@ -18,7 +18,7 @@ def split_img_label(images_path, labels_path, train_ratio=0.7, val_ratio=0.2, te
     if os.path.exists(DATASETS):
         print(LABEL_ALERT_DATASETS_EXISTS)
         return
-
+    
     for split in [TRAIN, VAL, TEST]:
         os.makedirs(os.path.join(DATASETS, IMAGES, split), exist_ok=True)
         os.makedirs(os.path.join(DATASETS, LABELS, split), exist_ok=True)
@@ -51,6 +51,45 @@ def split_img_label(images_path, labels_path, train_ratio=0.7, val_ratio=0.2, te
     move_files(train_files, TRAIN)
     move_files(val_files, VAL)
     move_files(test_files, TEST)
+
+    print(LABEL_SPLIT_SUCCESS)
+    
+
+# Função para distribuir as imagens e labels para treino e validação (validação recebe uma cópia)
+def split_img_label_without_test(images_path, labels_path,  val_ratio=0.2, seed=42):
+    if os.path.exists(DATASETS):
+        print(LABEL_ALERT_DATASETS_EXISTS)
+        return
+
+    for split in [TRAIN, VAL]:
+        os.makedirs(os.path.join(DATASETS, IMAGES, split), exist_ok=True)
+        os.makedirs(os.path.join(DATASETS, LABELS, split), exist_ok=True)
+
+    # Obtém a lista de path dos arquivos de imagem e faz um embaralhamento
+    list_image_files = glob(os.path.join(images_path, '*.jpg')) + glob(os.path.join(images_path, '*.webp')) + glob(os.path.join(images_path, '*.jpeg'))
+    random.seed(seed)
+    random.shuffle(list_image_files)
+
+    # Obtém o total e indexadores para serem utilizados na distribuição
+    total = len(list_image_files)
+    val_split = int(total * val_ratio)
+
+    # Passa a lista para cada grupo distribuido
+    train_files = list_image_files
+    val_files = list_image_files[:val_split]
+
+    # Função que será reutilizada para copiar os arquivos para seu destino específico, além disso move txt que tenha o mesmo nome da imagem
+    def copy_files(file_list, split):
+        for img_path in file_list:
+            label_path = os.path.join(labels_path, os.path.splitext(os.path.basename(img_path))[0] + ".txt")
+            if os.path.exists(label_path):
+                shutil.copy(img_path, os.path.join(DATASETS, IMAGES, split, os.path.basename(img_path)))
+                shutil.copy(label_path, os.path.join(DATASETS, LABELS, split, os.path.basename(label_path)))
+            else:
+                print(f"Nenhum rótulo encontrado {img_path}")
+
+    copy_files(train_files, TRAIN)
+    copy_files(val_files, VAL)
 
     print(LABEL_SPLIT_SUCCESS)
     

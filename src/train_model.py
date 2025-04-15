@@ -5,8 +5,8 @@ from ultralytics import YOLO
 def train_model():
     model = YOLO(BASE_MODEL)
 
-    print(LABEL_START_TRAIN)
-    model.train(data=DATASET_CONFIG_FILE, epochs=150, imgsz=640)
+    print(LABEL_START_TRAIN)    
+    model.train(data=DATASET_CONFIG_FILE, epochs=150, imgsz=640, multi_scale=True, plots=True)
 
     print(LABEL_SAVE_MODEL)
     model.save(FINE_TUNED_MODEL)
