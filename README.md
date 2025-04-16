@@ -57,7 +57,7 @@ Caso queira treinar um novo modelo, deverá seguir os passos:
 
 - apagar o arquivo best.pt;
 - crie a pasta `dataset_to_split` na raiz do projeto e adicione as pastas images e labels com seus respectivos arquivos. Para facilitar utilize [Label Studio](https://labelstud.io/);
-- utilize uma das funções disponíveis em util.py para distribuir em train, val e test;
+- utilize a função disponível em util.py para distribuir em train, val e test;
 - execute main.py;
 - pronto agora você verá um novo best.pt disponível na raiz do projeto.
 
