@@ -6,6 +6,7 @@ def train_model():
     model = YOLO(BASE_MODEL)
 
     print(LABEL_START_TRAIN)    
+    # Na função train, caso queira usar gpu, basta passar device=0, caso contrário, sem esse parametro ele usará a cpu
     model.train(data=DATASET_CONFIG_FILE, epochs=150, imgsz=640, multi_scale=True, plots=True)
 
     print(LABEL_SAVE_MODEL)

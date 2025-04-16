@@ -1,4 +1,4 @@
-BASE_MODEL = "yolo11s.pt" # Modelo base
+BASE_MODEL = "yolo11n.pt" # Modelo base
 FINE_TUNED_MODEL = "best.pt" # Modelo treinado
 DATASET_CONFIG_FILE = "dataset.yaml" # Arquivo de configuração do dataset
 DISABLE_EMAIL_SERVICE = False    # Para desativar o serviço de e-mail, defina como True
@@ -18,5 +18,5 @@ MINIMUM_INTERVAL_EMAIL_IN_SECONDS = 300  # 5 minutos
 
 PROCESSING_VIDEO_LABEL = "Processando video..."
 
-WARNING_LIST = ["Knife"]
-SECURE_LIST = ["Hand"]
+WARNING_LIST = ["knife"]
+SECURE_LIST = ["ball", "hand", "ruler"]

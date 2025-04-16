@@ -1,7 +1,9 @@
 train: images/train
 val: images/val
-test: images/test
 
 names:
-  0: Hand
-  1: Knife
+  0: ball
+  1: hand
+  2: knife
+  3: paper knife
+  4: ruler

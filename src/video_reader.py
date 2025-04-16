@@ -113,6 +113,10 @@ def process_video(video_path: str, model: YOLO, must_record=False, output_file="
     
     video_capture.release()
     cv2.destroyAllWindows()
+    if must_record:
+        print(f"Vídeo processado e salvo como {output_file}.")
+    else:
+        print("Vídeo processado, mas não salvo.")
 
 
 

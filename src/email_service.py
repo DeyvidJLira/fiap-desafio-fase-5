@@ -5,6 +5,7 @@ import base64
 
 from constants import DISABLE_EMAIL_SERVICE
 
+# Esta função utiliza a biblioteca SendGrid para enviar e-mail com anexo.
 def send_email(subject, body, attachment_content=None, attachment_name=None, attachment_type='image/jpg'):
     if DISABLE_EMAIL_SERVICE:
         print("Serviço de e-mail desativado.")
